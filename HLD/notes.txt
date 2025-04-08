@@ -18,19 +18,42 @@ Load balancing: The process of balancing the load evenly on all servers
 
 Consistent Hashing
 
-Application layer protocol:
+# Network Protocols
+- Define rules so that machines can communicate with each other(over network)
+
+Application layer protocols:
 1. Client-server protocol
-Client: Sends Request
-Server: Receives request, process request, send response
+Client: Sends Request, Receives response
+Server: Receives request, Process request, Send response
+Protocols: HTTP/HTTPS, FTP, SMTP, IMAP, Web socket
 
 Unidirectional communication
 HTTP - 1 connection
-FTP - 2 connection, control(always on) and data(can be on or off)
-SMTP - sending the email IMAP
+HTTPS - similar to HTTP, but secure, uses encryption
+FTP - 2 connection, control(always on) and data(can be on or off), not secure,
+SMTP - sending the email 
+IMAP - Receiving/accessing the mail(mail at central server)
+POP3 - same as IMAP, but mail deletes after reading
 
 Bi-directional communication
 Web socket
 
 2. Peer to peer protocol
-Bi-directional communication + client-to-client
-WebRTC
+Bi-directional communication + any computer can communicate with any other computer
+All computers are equivalent, no client-server
+Fast 
+Protocols: WebRTC
+WebRTC uses UDP
+
+Transport/Network Layer protocols:
+1. TCP/IP
+Data packets
+Ordering maintain
+Acknowledgment of each package
+Slow
+
+2. UDP/IP
+No connection maintain
+No ordering
+No acknowledgement
+Fast
