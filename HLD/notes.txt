@@ -1,0 +1,36 @@
+Vertical scaling: Buy better machines
+Load balancing not required
+Single point of failure
+Inter process communication
+Data consistent
+Hardware limit
+Small no. of users
+
+Horizontal scaling: Buy more machines
+Load balancing required
+Resilient
+Network call(RPC)
+Data inconsistency
+No hardware limit
+Huge number of users
+
+Load balancing: The process of balancing the load evenly on all servers
+
+Consistent Hashing
+
+Application layer protocol:
+1. Client-server protocol
+Client: Sends Request
+Server: Receives request, process request, send response
+
+Unidirectional communication
+HTTP - 1 connection
+FTP - 2 connection, control(always on) and data(can be on or off)
+SMTP - sending the email IMAP
+
+Bi-directional communication
+Web socket
+
+2. Peer to peer protocol
+Bi-directional communication + client-to-client
+WebRTC
