@@ -57,3 +57,33 @@ No connection maintain
 No ordering
 No acknowledgement
 Fast
+
+
+# Microservice Design Pattern
+
+Monolithic -> Microservice
+
+1. Strangler Pattern
+- Refactoring 2 microservices
+- Gradually increase the load on microservice and decrease on monolithic
+
+Data management in microservice
+a) Database for each individual service: ACID properties difficult to maintain
+b) Shared database: not much scalable, we can't scale according to service, we have to scale whole database, ACID properties easy to maintain
+
+2. SAGA Pattern
+Helps maintain ACID properties
+Sequence of Local Transaction
+Each DB listens for events and work accordingly
+Types: Choreography, Orchestration
+Choreography: Drawback -> Cycle dependency
+Orchestrator: central component
+
+3. CQRS: differentiate Command and Query(Read)
+Helps in JOINS 
+Command     Query     Request     Segregation 
+ (CUD)     (SELECT)
+
+
+Database per service
+No service can query the DB of another service
