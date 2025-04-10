@@ -1,0 +1,66 @@
+# SOLID principles
+
+S - Single Responsibility Principle
+O - Open/Closed Principle
+L - Liskov Substitution
+I - INtergace Segment
+D - Dependency Inversion
+
+Advantages of SOLID principles:
+- Avoid Duplicate code
+- Easy to maintain
+- Easy to understand
+- Flexible software
+- Reduce Complexity
+
+Single Responsibility Principle
+A class should have only 1 reason to change
+
+Marker entity:
+
+class Marker {
+    String name;
+    String color;
+    int year;
+    int price;
+
+    public Marker(String name, String color, int year, int price) {
+        this.name = name;
+        this.color = color;
+        this.year = year;
+        this.price = price; 
+    }
+}
+
+Invoice entity:
+
+class Invoice {
+
+    private Marker marker;
+    private int quantity;
+
+    public Invoice(Marker marker, int quantity) {
+        this.marker = marker;
+        this.quantity = quantity;
+    }
+
+    public int calculateTotal() {
+        int price = ((marker.price) * this.quantity);
+        return price;
+    }
+
+    public void printInvoice() {
+        // print the Invoice
+    }
+
+    public void saveToDB() {
+        // Save the data into DB
+    }
+}
+
+Open/Closed Principle
+Open for extension but Closed for modification
+
+Design pattern: principle for the OOP
+
+Strategy design pattern:
