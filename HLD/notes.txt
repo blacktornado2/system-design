@@ -59,7 +59,98 @@ No acknowledgement
 Fast
 
 
-# Microservice Design Pattern
+# Microservices Design Pattern
+Introduction and decomposition pattern
+
+Types of architecture
+1. Monolithic 
+2. Microservices
+
+Monolithic(legacy)
+
+
+advantage:
+
+disadvantage: 
+overload IDE
+scaling is very hard
+
+
+Microservices
+Divide whole codebase into services
+
+advantage:
+easy to manage
+easy to scale
+
+
+disadvantage:
+Latency can increase if microservices are not designed properly
+Monitoring can be difficult
+Transaction management is difficult
+
+
+
+Decomposition
+Decompose by business capability
+Decompose by subdomain
+
+
+
+database
+database per service
+shared database
+
+Communication
+API 
+Events
+
+
+Integration
+API Gateways
+
+
+Observability
+
+
+Monitoring
+
+
+Decomposition pattern
+Big -> small
+
+Decompose by business functionality
+Online order application
+Order management
+Product management
+Account management
+Login 
+Billing
+Payment
+
+Decompose by Subdomain(DDD -> domain driven design)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Monolithic -> Microservice
 
@@ -87,3 +178,31 @@ Command     Query     Request     Segregation
 
 Database per service
 No service can query the DB of another service
+
+
+Scale from 0 to 1 Million users!
+
+
+1. Single Server
+
+2. Application & DB server separation
+
+3. Load balancer + Multiple app servers
+
+4. Database replication(master-slave architecture)
+write -> master
+read -> slave
+
+5. Cache(cache hit, cache miss)
+
+6. CDN(Content Delivery Network)
+CDN does caching, but all those who does caching are not CDN. ex: Redis
+Does caching of static data
+
+7. Data centre
+
+8. Messaging queue: Async nature
+
+9. DB scaling
+a) Vertical
+b) Horizontal
