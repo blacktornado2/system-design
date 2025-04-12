@@ -59,76 +59,86 @@ No acknowledgement
 Fast
 
 
-# Microservices Design Pattern
-Introduction and decomposition pattern
+# Microservices Design Pattern: Introduction and decomposition pattern
 
 Types of architecture
 1. Monolithic 
 2. Microservices
 
 Monolithic(legacy)
+    A monolithic architecture structures an application as a single, indivisible unit. 
+    All components (user interface, business logic, data access layer, background jobs, etc.) are built and deployed together as one large codebase and executable/deployable artifact 
+    (e.g., a single WAR file for Java, a single executable)
 
+Advantage:
+    Simplicity
+    Atomic transaction
 
-advantage:
-
-disadvantage: 
-overload IDE
-scaling is very hard
+Disadvantage: 
+    Tightly coupled
+    Overload IDE
+    Scaling is very hard
+    Slow development(at scale)
+    Single point of failure
 
 
 Microservices
-Divide whole codebase into services
+    A microservices architecture structures an application as a collection of small, independent, and loosely coupled services. 
+    Each service focuses on a specific business 1  capability, runs in its own process, and communicates with other services, typically over a network using lightweight protocols like HTTP/REST APIs or asynchronous messaging. 
+    Each service can be developed, deployed, and scaled independently
 
-advantage:
-easy to manage
-easy to scale
-
-
-disadvantage:
-Latency can increase if microservices are not designed properly
-Monitoring can be difficult
-Transaction management is difficult
+Advantage:
+    Easy to manage
+    Easy to scale
+    Independent deployment
+    Technology diversity
 
 
+Disadvantage:
+    Latency can increase if microservices are not designed properly
+    Operational Complexity
+    Monitoring can be difficult
+    Transaction management is difficult
+
+Which one to use?
+ Use Monolithic when: Starting Small / MVP: For new projects, especially startups or Minimum Viable Products (MVPs), where the primary goal is speed to market and validating an idea. The initial simplicity is a major advantage.
+ Use Microservices when: Large, Complex Applications: For applications with multiple, complex business domains that can be logically separated. Highly scalable applications
+
+Microservices Design Phases:
 
 Decomposition
-Decompose by business capability
-Decompose by subdomain
+    Decompose by business capability
+    Decompose by subdomain
 
+Decomposition pattern
+    Big -> small
 
+Decompose by business functionality
+    Online order application
+    Order management
+    Product management
+    Account management
+    Login 
+    Billing
+    Payment
 
-database
-database per service
-shared database
+Decompose by Subdomain(DDD -> domain driven design)
+
+Database
+    Database per service
+    Shared database
 
 Communication
-API 
-Events
-
+    API 
+    Events
 
 Integration
-API Gateways
-
+    API Gateways
 
 Observability
 
-
 Monitoring
 
-
-Decomposition pattern
-Big -> small
-
-Decompose by business functionality
-Online order application
-Order management
-Product management
-Account management
-Login 
-Billing
-Payment
-
-Decompose by Subdomain(DDD -> domain driven design)
 
 
 
