@@ -15,7 +15,6 @@
 // final method: Cannot be overridden by subclasses.
 
 
-
 // Superclass
 class Animal {
     String name;
@@ -28,15 +27,16 @@ class Animal {
     }
 
     public void eat() {
-        System.out.println(name + " is eating.");
+        System.out.println(this.name + " is eating.");
     }
 
     public void sleep() {
-        System.out.println(name + " is sleeping.");
+        System.out.println(this.name + " is sleeping.");
     }
 
-     public final void breathe() { // This method cannot be overridden
-         System.out.println(name + " is breathing.");
+    // This method cannot be overridden
+    public final void breathe() { 
+         System.out.println(this.name + " is breathing.");
      }
 }
 
@@ -53,14 +53,14 @@ class Dog extends Animal {
 
     // New method specific to Dog
     public void bark() {
-        System.out.println(name + " (a " + breed + ") says Woof!");
+        System.out.println(this.name + " (a " + this.breed + ") says Woof!");
     }
 
     // Overriding a superclass method (See Polymorphism)
     @Override // Good practice annotation
     public void eat() {
         super.eat(); // Optionally call the superclass version
-        System.out.println(name + " the Dog eats dog food.");
+        System.out.println(this.name + " the Dog eats dog food.");
     }
 
     // Cannot override breathe() because it's final in Animal
@@ -86,7 +86,7 @@ class Cat extends Animal {
 }
 
 
-class InheritanceMain {
+class Inheritance {
     public static void main(String[] args) {
         Dog myDog = new Dog("Buddy", 4, "Golden Retriever");
         myDog.eat();    // Calls overridden Dog eat() method

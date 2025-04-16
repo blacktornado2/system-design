@@ -1,0 +1,53 @@
+Overview of OOPS
+Object Oriented Programming
+Here object means real word entity like car, bike, ATM etc.
+Goal of OOPS: Increase flexibility and manitainability of programs
+
+// TODO: Complete this 
+Procedural programming vs. OOPS
+
+Object and Classes
+
+-> Class
+Class: blueprint of an object(template)
+Class = procedures(methods) + properties(attributes)
+A class is required to create an object
+A class can create any no. of objects
+
+Object: instance of a class
+- object: dog. Properties: age, breeed, color. Behaviours: bark, sleep, eat
+- object: car. Properties: color, type, brand. Behavious: applyBreeaks, Drive, IncreaseSpeed
+  Creating a new object: User ankit = new User();
+  new: Keyword used to allocate memory for the object.
+
+
+Pillar of OOPS
+
+* Inheritance:
+  Concept:
+- A mechanism where a new class (subclass or derived class) inherits properties (fields) and behaviors (methods) from an existing class (superclass or base class). 
+- This supports code reuse and establishes an "IS-A" relationship (e.g., a Dog IS-A Animal)
+
+* Polymorphism:
+  Concept:
+- Many forms. Allows objects of different classes to be treated as objects of a common superclass. 
+- It enables performing a single action in different ways depending on the object's actual type.
+a) Compile-time Polymorphism (Method Overloading): 
+      Defining multiple methods in the same class with the same name but different parameters (different number, type, or order of parameters). 
+      The compiler determines which method to call based on the method signature at compile time. Also known as static binding.
+b) Runtime Polymorphism (Method Overriding): 
+      A subclass provides a specific implementation for a method that is already defined in its superclass. 
+      The method to be executed is determined at runtime based on the actual object type, not the reference type. 
+      Requires inheritance. Also known as dynamic binding or dynamic method dispatch.   
+
+
+1st pillar of OOPS - Data Abstraction
+It hides the internal implementation and shows only essential functionality to the user
+It can be achieved through interface and abstract classes
+Car: we are only shown the breakPedal, and if we press it, car's speed will reduce, but HOW
+Phone: how call is made is abstracted to user
+Advantages: Increases security and confidentiality
+
+Relationship
+- is-a relationship
+- has-a relationship
