@@ -102,3 +102,11 @@ class Inheritance {
         myCat.meow();   // Calls Cat specific meow() method
     }
 }
+
+// Types of Inheritance in Java:
+
+// 1. Single Inheritance: A class inherits from only one direct superclass (Java enforces this for classes).
+// 2. Multilevel Inheritance: A class inherits from a class, which in turn inherits from another class (e.g., Puppy extends Dog extends Animal).
+// 3. Hierarchical Inheritance: Multiple classes inherit from a single superclass (e.g., Dog extends Animal and Cat extends Animal).
+// Note: Java does not support Multiple Inheritance (a class inheriting from multiple superclasses directly) for classes due to the "Diamond Problem."
+// However, it achieves a form of multiple inheritance using Interfaces.
