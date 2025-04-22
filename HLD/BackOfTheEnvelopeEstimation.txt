@@ -1,0 +1,71 @@
+BOE Estimation
+
+ - Don't directly jump to design part
+ - Drives our decision for System Design
+
+Considerations:
+ - Rough(tshirt size) Estimation
+ - Don't spend much time
+ - Keep the assumption value simple(multiple of 10 or 100)
+
+CheatSheet
+
+         Traffic      Storage
+3 zero   Thousand       KB
+6 zero   Million        MB
+9 zero   Billion        GB
+12 zero  Trillion       TB
+15 zero  Quadrillion    PB
+
+What to answer
+ - No. of servers?
+ - RAM?
+ - Storage?
+ - Tradeoffs(CAP)
+
+Estimation of Facebook
+
+1. Traffic Estimation:
+
+Total users: 1 billion
+DAU(Daily Active users): 25% of total users = 250 Million
+
+Every user(DAU): 5 Read / 2 Write = 7 queries per day
+250 Million users -> 250 Million * 7 queries per day = 1750 Million = 1.75 billion queries per day
+Queries per second = 1750/(60*24*24) = 18K queries per second 
+
+2. Storage assumption:
+ - Every user(DAU) doing 2 post(each post -> 250 characters)
+ - 10% of users upload 1 image(300 KB size)
+
+ 1 Post -> 250 characters, 1 character = 2 bytes, 1 post -> 500 bytes
+ 2 Post -> 1 KB
+ 250 Million users * 1 KB = 250 GB/day
+
+ 10%of DAU -> 25 Million
+ For images 25 Million * 300 KB = 7500GB = 7.5 TB/day
+
+Let's say we want to store for 5 years(around 2000 days)
+
+(POST) 2000 * 250 GB = 500 TB
+(IMAGES) 2000 * 7.5TB = 15 PB
+
+3. RAM estimation:
+For each user, last 5 posts are in cache
+1 post = 500 bytes, 5 posts = 2500 bytes
+
+250 Million -> 2.5KB * 250 Million = 2.5 * 2.5 * 10^3 * 10^8 = 6.25 * 10^11 = 625 GB
+1 Machine = 62 GB, then 10 machines are required for caching
+
+Latency: 
+95% time -> 500ms(1 request)
+
+18K req. per second 
+1 Server -> 50 threads => 100 request per second
+No. of machines = 18k/100 = 180 servers
+
+Tradeoffs:
+CAP theorem
+Keep A and P, drop C
+
+
