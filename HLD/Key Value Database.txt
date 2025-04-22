@@ -1,0 +1,27 @@
+Design a Key-Value Database
+
+--------------------------------------------------------------------------------
+
+Ex: DynamoDB
+
+Goals:
+1. Sacalability
+2. Decentralization
+3. Eventual consistency
+
+Steps:
+1. Partition
+2. Replication
+3. GET & PUT operation
+4. Data versioninig
+5. Gossip protocol
+6. Merkle tree
+
+--------------------------------------------------------------------------------
+
+Partition
+
+Hashtable
+
+key      value
+123       car

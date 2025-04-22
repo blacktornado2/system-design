@@ -60,11 +60,11 @@ We need to store the relationship between the short_alias and the long_url. A si
 ------------------------------------------------------------------------------------------------------------------------------------
 Column Name            	            Data Type	            Description	                                 Constraints               |
 ------------------------------------------------------------------------------------------------------------------------------------
-short_alias	                         VARCHAR	         The generated short code (e.g., aBcDeF)	Primary Key, Unique            |
-long_url	                   TEXT or VARCHAR(2048+)	 The original long URL	                          Not Null                 |
-creation_date	                     TIMESTAMP	         When the short link was created	                                       |
-(Optional)expiration_date	         TIMESTAMP	         When the link should expire	                                           |
-(Optional) user_id	                VARCHAR/INT	          If supporting user accounts                                              |
+short_alias	                         VARCHAR	         The generated short code (e.g., aBcDeF)	Primary Key, Unique              |
+long_url	                   TEXT or VARCHAR(2048+)	    The original long URL	                          Not Null                 |
+creation_date	                     TIMESTAMP	         When the short link was created	                                         |
+(Optional)expiration_date	         TIMESTAMP	         When the link should expire	                                             |
+(Optional) user_id	                VARCHAR/INT	        If supporting user accounts                                              |
 ------------------------------------------------------------------------------------------------------------------------------------
 
 Database Choice Considerations:
