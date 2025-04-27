@@ -1,0 +1,69 @@
+SQL and NoSQL
+
+SQL(Structured Query Language)
+- manage RDBMS
+- RDBMS has rows and columns
+- Relations b/w multiple tables
+
+
+Structure
+- Tables, rows, columns
+- Pre-determined schema
+- Relations b/w different tables
+
+Nature
+- Concentrated/Centralized(data should be on the same server)
+- 
+
+Scale
+- Very well vertical scaling
+
+Properties
+- ACID Properties
+
+A - Atomicity
+C - Consistency
+I - Isolation
+D - Durability
+
+NoSQL(Not only SQL)
+
+Structure
+NoSQL works on unstructured data
+Ex: Key-value DB, document DB, column-wise DB, Graph DB
+
+Key-Value DB: ex: DynamoDB
+document DB: we can query on key and also on value, ex: MongoDB
+column-wise DB: 
+
+
+Graph DB: data is stored in the form of Node and edge
+social networking
+recommendation engine
+
+
+
+
+Nature: distributed
+
+
+
+
+Scale: It supports Horizontal scaling very well
+
+
+
+Properties: 
+BASE Properties
+BA -> Basically Available
+S -> Save state
+E -> Eventual Consistency
+
+
+
+SQL                                                         NoSQL
+Flexible Query functionality                            Doesn't support flexible query functionality
+Data is relational in Nature                                                                                    
+Data Integrity: ACID                                    Doesn't follow ACID, 
+Ex: Financial institutions
+dafwf                                                   High availability, high performance with some inconsistency
