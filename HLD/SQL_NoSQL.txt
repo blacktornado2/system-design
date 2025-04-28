@@ -67,3 +67,89 @@ Data is relational in Nature
 Data Integrity: ACID                                    Doesn't follow ACID, 
 Ex: Financial institutions
 dafwf                                                   High availability, high performance with some inconsistency
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Fundamental Choice: When to Use SQL vs. NoSQL?
+
+When should you choose a traditional relational database (SQL), and when is a NoSQL database a better fit? Explain why.
+
+Core Concepts:
+SQL (Relational) Databases: Think of these like highly organized spreadsheets (tables) where data is stored in rows and columns.
+    They have a predefined structure (schema) and are excellent at ensuring data consistency and handling relationships between tables (like linking a Customers table to an Orders table). 
+    Examples: MySQL, PostgreSQL, SQL Server, MariaDB
+
+NoSQL (Non-Relational) Databases: This is a broad category for databases that don't primarily use the table/row/column structure. 
+    They are often more flexible, handle large amounts of data, and scale out easily. 
+    Examples: MongoDB (Document), DynamoDB(Key-Value), Redis (Key-Value), Cassandra (Column-Family), Neo4j (Graph).
+
+When to Choose SQL (Relational):
+    Need for Strong Consistency (ACID): If you absolutely cannot afford data inconsistencies (e.g., banking transactions where money debited must equal money credited),
+    SQL's ACID properties are crucial.
+    Structured & Related Data: When your data fits neatly into tables and has clear relationships that you need to query frequently (e.g., finding all orders for a specific customer).
+    Complex Queries/Reporting: SQL is a powerful language for asking complex questions involving multiple tables (using JOINs).
+    Mature Technology & Tooling: SQL has been around for decades, so there's a vast amount of knowledge, skilled developers, and mature tools available.
+    Example Scenario: A banking system needs to track user accounts, balances, and transactions accurately. Every transaction must be atomic (all or nothing) and consistent. SQL is the natural choice.
+
+When to Choose NoSQL (Non-Relational):
+    Need for High Scalability & Availability: If you expect massive traffic and need your system to stay available even if some servers fail, NoSQL databases (designed for horizontal scaling across many machines) are often better.
+    Flexible or Evolving Data: If your data structure isn't fixed or changes frequently (e.g., user profiles where different users have different fields, product catalogs with varying attributes), NoSQL's flexible schema is advantageous.
+    Large Volumes of Data (Big Data): NoSQL databases are often built to handle huge datasets distributed across many servers.
+    Simple, Fast Lookups: For scenarios where you primarily need to fetch data by a specific key very quickly (e.g., user sessions, caching), Key-Value NoSQL databases excel.
+    Example Scenario: A social media platform needs to handle millions of users posting updates, comments, and likes concurrently. It needs to scale massively and be highly available. The structure of a "post" might evolve. A NoSQL database (like a Document or Column-Family store) is a common choice.
+
+Key Takeaway: Choose SQL when data integrity, structure, and complex relational queries are paramount. Choose NoSQL when massive scale, high availability, and schema flexibility are the primary drivers.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Scalability Strategies: Scaling Up vs. Scaling Out
+
+How do SQL and NoSQL databases typically handle increasing load (scale)? What does this mean for designing a system?
+
+Core Concepts:
+    Scalability: A system's ability to handle increasing load (more users, more data, more requests).
+    Vertical Scaling (Scaling Up): Making a single server more powerful (adding more CPU, RAM, faster disks). Imagine upgrading your laptop to a super-powerful desktop.
+    Horizontal Scaling (Scaling Out): Adding more servers to distribute the load among them. Imagine adding more laptops to work on a task together.
+
+SQL Scaling:
+    Traditionally Vertical: The easiest way to scale SQL is often to buy a bigger server. This is simple initially but has limits (hardware gets expensive, and there's a maximum size) and creates a single point of failure (if that one big server dies, everything stops).
+    Horizontal (Sharding): For larger scale, SQL databases can be scaled horizontally through a process called "sharding." This involves splitting your data across multiple servers (e.g., users A-M on Server 1, users N-Z on Server 2). Sharding adds complexity to managing the database and querying data that might span multiple shards.
+
+NoSQL Scaling:
+    Natively Horizontal: Most NoSQL databases are designed from the ground up to scale horizontally. Adding more servers (nodes) to a NoSQL cluster is often a standard procedure. The database automatically distributes data and load across the available nodes.
+    Fault Tolerance: Horizontal scaling also improves fault tolerance. If one server in a NoSQL cluster fails, the others can often continue operating, potentially with reduced capacity but without complete system failure.
+
+System Design Implications:
+    Choosing SQL might mean planning for potentially expensive hardware upgrades or dealing with the complexity of sharding later if massive scale is needed.
+    Choosing NoSQL often means designing for a distributed system from the start, considering how data is distributed and potential network issues between nodes. It generally offers a smoother path to very large scale.
+
+Key Takeaway: SQL traditionally scales up (bigger server), but can scale out (sharding, complex). NoSQL is typically designed to scale out (more servers) easily, which is better for massive growth and availability.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Consistenzcy Models: ACID vs. BASE
+
+Explain ACID (common in SQL) and BASE (common in NoSQL). When is the weaker consistency of BASE acceptable?
+
+Core Concepts:
+    Consistency (in Databases): Ensures that data follows predefined rules and that transactions leave the database in a valid state.
+
+    ACID (SQL): This acronym describes the guarantees traditional relational databases provide for transactions (a sequence of operations treated as a single unit):
+    A - Atomicity: All operations within a transaction succeed, or none of them do. If any part fails, the entire transaction is rolled back. (Think: Bank transfer - either both debit and credit happen, or neither happens).
+    C - Consistency: A transaction brings the database from one valid state to another. Data integrity rules (like account balance cannot be negative) are enforced.
+    I - Isolation: Concurrent transactions don't interfere with each other. It seems as if transactions are executed one after another, even if they run simultaneously. (Think: Two people trying to book the last seat on a plane - isolation ensures only one succeeds cleanly).
+    D - Durability: Once a transaction is successfully committed, the changes are permanent and survive system failures (like power outages or crashes).
+
+    BASE (NoSQL): This model is often found in highly distributed NoSQL systems that prioritize availability and scale over strict consistency:
+    B - Basically Available: The system guarantees availability most of the time, even if parts of it are down or partitioned (due to network issues). It prioritizes responding, even if the data might be slightly stale.
+    A - Soft State: The state of the system may change over time, even without new input, as consistency propagates. Data might be inconsistent temporarily.
+    E - Eventually Consistent: If no new updates are made, eventually all replicas of the data will converge to the same value. It doesn't happen immediately like in ACID, but it will get there "eventually." (Think: Liking a post on social media - your 'like' might not appear instantly to all your friends worldwide, but it will show up for everyone eventually).
+
+When is BASE Acceptable?
+- When high availability and massive scalability are more critical than immediate, perfect consistency for all operations.
+- When the business logic can tolerate temporary inconsistencies.
+- Examples: Social media likes/views counts, product recommendations (slightly stale is okay), IoT sensor data (eventual aggregation is fine), user session data.
+
+When is BASE Unacceptable?
+- Financial transactions, inventory management, reservation systems – anywhere immediate accuracy across different parts of the data is essential.
+- Key Takeaway: ACID (SQL) provides strong guarantees, ideal for critical transactional data. BASE (NoSQL) prioritizes availability and scale, accepting temporary inconsistencies, suitable for many large-scale web applications.
