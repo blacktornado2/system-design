@@ -127,7 +127,7 @@ Key Takeaway: SQL traditionally scales up (bigger server), but can scale out (sh
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-3. Consistenzcy Models: ACID vs. BASE
+3. Consistency Models: ACID vs. BASE
 
 Explain ACID (common in SQL) and BASE (common in NoSQL). When is the weaker consistency of BASE acceptable?
 

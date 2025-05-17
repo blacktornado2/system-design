@@ -1,3 +1,10 @@
+How to write good code:
+1. Readable
+2. Extensibility
+3. Correctness
+
+
+
 # SOLID principles
 
 S - Single Responsibility Principle
