@@ -1,7 +1,7 @@
 Vertical scaling: Buy better machines
 Load balancing not required
 Single point of failure
-Inter process communication
+Inter process communication: very fast
 Data consistent
 Hardware limit
 Small no. of users
@@ -9,14 +9,17 @@ Small no. of users
 Horizontal scaling: Buy more machines
 Load balancing required
 Resilient
-Network call(RPC)
+Network call(RPC): slow as compared to inter process communication
 Data inconsistency
 No hardware limit
 Huge number of users
 
 Load balancing: The process of balancing the load evenly on all servers
 
-Consistent Hashing
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 # Network Protocols
 - Define rules so that machines can communicate with each other(over network)
@@ -57,6 +60,8 @@ No connection maintain
 No ordering
 No acknowledgement
 Fast
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # Microservices Design Pattern: Introduction and decomposition pattern
@@ -160,6 +165,7 @@ Monitoring
 
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 Monolithic -> Microservice
@@ -190,6 +196,11 @@ Database per service
 No service can query the DB of another service
 
 
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 Scale from 0 to 1 Million users!
 
 
@@ -216,3 +227,36 @@ Does caching of static data
 9. DB scaling
 a) Vertical
 b) Horizontal
+
+
+
+HLD:
+- Vertical vs Horizontal Scaling: DONE
+- Client-Server Architecture: TODO:
+- Load Balancer: DONE
+- Caching: TODO:
+- Database: TODO:
+- SQL/NoSQL: DONE
+- Creating Diagrams: TODO:
+- Indexing in Database: TODO:
+- Forward and Reverse Proxy: TODO:
+- Message Queue and CDN: TODO:
+- CAP Theorem: TODO:
+- Design a rate limiter: TODO:
+- Design a unique ID Generator: TODO:
+- URL shortener: DONE
+- Design a notification system | SMS, Email and Push: TODO:
+- Design Dropbox | Colud | Gdrive | Onedrive: TODO:
+- Design a newsfeed | FB, IG, Reddit: TODO:
+- Consistent Hashing: DONE
+- Kafka: TODO:
+- API Gateway: TODO:
+
+- Network Protocols: TODO:
+- Microservices design patterns: TODO:
+- SAGA pattern: TODO:
+- Strangler Pattern: TODO:
+- CQRS pattern: TODO:
+- Scale from 0 to 1 million: DONE
+- Back of the envelope estimation(Capacity Estimation): DONE
+- Partitioning and Sharding: DONE

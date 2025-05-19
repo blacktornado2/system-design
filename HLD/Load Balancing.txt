@@ -1,0 +1,64 @@
+https://studyalgorithms.com/system-design/load-balancer/
+
+
+         +--------+       +-------------+       +------------+
+ Clients | C1     | ----> |             | ----> |  Server 1  |
+         | C2     | ----> |    Load     | ----> |            |
+         | C3     | ----> |   Balancer  |       |  Server 2  |
+         | C4     | ----> |             |       |            |
+         | C5     | ----> |             |       |  Server 3  |
+         +--------+       +-------------+       |            |
+                                                +------------+
+
+
+
+Load balancer:
+- A load balancer is a device or software that distributes incoming network traffic across multiple servers.
+- Its main purpose is to improve the availability, reliability, and performance of applications, especially in high-traffic environments.
+
+
+
+🔧 Key Functions of a Load Balancer
+- Traffic Distribution: Distributes client requests or network loads across several backend servers to prevent any one server from being overwhelmed.
+- Fault Tolerance / High Availability: If one server fails, the load balancer reroutes traffic to the remaining healthy servers.
+- Scalability: Easily add or remove servers from the pool without affecting the end user.
+- Health Monitoring: Regularly checks the health of backend servers and stops sending traffic to those that are down.
+
+
+
+📊 Types of Load Balancing Algorithms
+- Least Connections – Routes traffic to the server with the fewest active connections, Good for long-lived connections.
+- Round Robin – Distributes traffic equally among servers in order, Simple and effective when all servers have similar spec
+- Weighted Round Robin – Servers get traffic based on predefined weights (e.g., more powerful servers get more traffic).
+- IP Hash – Assigns clients to servers based on the hash of their IP address, Enables sticky sessions.
+
+
+
+🧱 Types of Load Balancers
+1. Hardware Load Balancers: Physical devices used mostly in traditional, large-scale enterprise setups(F5, Citrix ADC)
+2. Software Load Balancers: Applications like Nginx, HAProxy, or Apache HTTP Server that handle load balancing(Apache HTTP server, Nginx, HAProxy)
+3. Cloud Load Balancers: Offered by cloud providers (e.g., AWS Elastic Load Balancer, Azure Load Balancer, GCP Load Balancing), they are fully managed and scalable.
+
+
+
+🔨 Challenges
+- A load balancer can get very complex and it is not easy to setup.
+- It can become a single point of failure. We need to make sure that it gets rotated.
+- In case of a security attack, the entire system can go down.
+
+
+
+🌐 Load Balancer Types by Layer
+- Layer 4 (Transport Layer): Works with TCP/UDP, routes traffic based on IP address and port.
+- Layer 7 (Application Layer): Understands HTTP/HTTPS and routes based on URL, cookies, headers, etc.
+
+
+
+🚀 Use Cases
+- Web applications with heavy traffic.
+- APIs with distributed architecture (e.g., microservices).
+- CDNs
+- API Gateways
+- Ensuring zero-downtime deployments (via blue/green deployments).
+- Disaster recovery setups.
+
