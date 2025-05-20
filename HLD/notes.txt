@@ -235,9 +235,9 @@ HLD:
 - Client-Server Architecture: TODO:
 - Load Balancer: DONE
 - Caching: TODO:
-- Database: TODO:
+- Database: DONE
 - SQL/NoSQL: DONE
-- Creating Diagrams: TODO:
+- Creating Diagrams: DONE
 - Indexing in Database: TODO:
 - Forward and Reverse Proxy: TODO:
 - Message Queue and CDN: TODO:
