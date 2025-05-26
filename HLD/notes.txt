@@ -239,7 +239,7 @@ HLD:
 - SQL/NoSQL: DONE
 - Creating Diagrams: DONE
 - Indexing in Database: TODO:
-- Forward and Reverse Proxy: TODO:
+- Forward and Reverse Proxy: DONE
 - Message Queue and CDN: TODO:
 - CAP Theorem: TODO:
 - Design a rate limiter: TODO:

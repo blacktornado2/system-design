@@ -1,0 +1,27 @@
+Real time communication app: Whatsapp
+
+Functional Requirements:
+1. 1-1 chat
+2. Group chat
+3. Notification service
+4. Last seen, delivered, Read receipt, sent(one tick)
+
+Non-functional requirements:
+1. Availability
+2. Low latency
+
+
+Capacity Estimation:
+Daily Active users(DAU): 1 Billion
+Each user sends how many message daily: 100
+Average size of a message: 0.1KB
+No. of messages: 100 Billion
+Data send: 100 * 10^9 * 100 = 10 ^ 13 bytes => 10 TB per day
+Per year = 10 * 400 => 4000 TB => 4 PB / year
+
+Per user per day Images/Videos/GIF's => 10 Billion
+average size => 1 MB
+Total data = 10000TB => 10PB/day
+Per year => 400 * 10 => 4000PB => 4 Exabyte
+
+
