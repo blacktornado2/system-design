@@ -1,0 +1,7 @@
+
+
+
+Message Queue:
+
+Ex: RabbitMQ, Apache Kafka, Amazon SQS
+

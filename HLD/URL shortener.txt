@@ -1,0 +1,34 @@
+URL shortener:
+1. Shorten URL
+2. Re-direction of URL
+
+Functional Requirements:
+ - User base: 1 Billion
+ - 1(shortened):10(re-direction)
+ - 1 million shorten URL requests
+ - 10 Million re-direction URL requests
+ - 1 URL -> 100 bytes
+ - 1 million URL: 100 * 10 ^ 6 bytes => 100 MB
+ - 100MB * 400 => 40 GB per year
+ - We can use SQL database
+
+
+Non-Functional Requirements:
+ - Low latency
+ - Highly scalable
+ - Highly available
+
+
+ API's available:
+
+
+ 1. Shorten the URL
+ method: POST, URL: /api/v1/shorten/:{url}
+ HTTP: 200, shortenedURL
+
+ 2. Re-direction to the original URL
+ method: GET, URL: /api/v1/redirect/:{shortURL}
+ HTTP: 301(re-direct)
+
+
+ Custom Hashing Function?

@@ -1,0 +1,43 @@
+In any distributed system, you can only guarantee two out of the following three at the same time:
+ - C – Consistency
+ - A – Availability
+ - P – Partition Tolerance
+
+Consistency: The system should deliver the same results no matter how and from where we query
+ - Every read receives the most recent write or an error
+ - In a consistent system, all nodes agree on the same data at any time
+
+
+Availability: The system should always return some response or result
+ - Every request gets a non-error response, without guaranteeing that it’s the latest
+ - The system continues to operate and respond to requests, even if not all nodes are up to date
+ - Data might be slightly stale, but you’ll get a response
+
+
+Partition Tolerance: The system should be functional even if one partition is disconnected
+ - The system continues to work even if there's a network partition (i.e., communication is lost between some nodes)
+ - In a distributed system, network failures are inevitable
+ - Partition tolerance means the system can still function even if some nodes can’t talk to each other
+
+In the presence of a network partition (P), a distributed system must choose either Consistency (C) or Availability (A)
+So during a network split:
+ - You can reject requests to keep data consistent (CP system), or
+ - You can serve stale data to remain available (AP system).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+| Type     | Guarantees                         | Sacrifices          | Example Systems                                                               |
+| -------- | ---------------------------------- | ------------------- | ----------------------------------------------------------------------------- |
+| **CP**   | Consistency + Partition Tolerance  | Availability        | HBase, MongoDB (in strict mode), Zookeeper                                    |
+| **AP**   | Availability + Partition Tolerance | Consistency         | CouchDB, Cassandra, DynamoDB                                                  |
+| **CA**   | Consistency + Availability         | Partition Tolerance | Only possible in **non-distributed** systems (single-node, no partition risk) |
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+📌 Note: You can’t avoid partition tolerance in distributed systems — so the real trade-off is C vs A.
+
+
+Imagine a system with two servers in different cities:
+You write new data in Server A.
+Network breaks between A and B (partition).
+You now must choose:
+ - Block reads from B until it syncs with A (Consistency is there, but no availability)
+ - Allow reads from B even if it returns old data (Availability is there, but no consistency)

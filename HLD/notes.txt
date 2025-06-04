@@ -1,4 +1,11 @@
-Vertical scaling: Buy better machines
+------------------------------------------ System Design ------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+
+
+Vertical Scaling vs Horizontal Scaling
+
+Vertical Scaling: Upgrading current machine to make it more powerful
+Simple to implement, Easier to manage
 Load balancing not required
 Single point of failure
 Inter process communication: very fast
@@ -6,16 +13,34 @@ Data consistent
 Hardware limit
 Small no. of users
 
-Horizontal scaling: Buy more machines
+Horizontal Scaling: Buy more machines
+More complex management
 Load balancing required
 Resilient
 Network call(RPC): slow as compared to inter process communication
 Data inconsistency
 No hardware limit
 Huge number of users
+Decreases latency as client can connect to their nearest server
 
 Load balancing: The process of balancing the load evenly on all servers
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Client-Server Model
+The Client-Server Model is a distributed application structure that partitions tasks or workloads between providers of a resource or service, called servers, and service requesters, called clients. 
+Typically, clients and servers communicate over a network, making it possible for users to access services and resources remotely.
+
+Interaction Process
+The interaction between a client and server can be broken down into the following steps:
+ 1. Request: The client sends a request to the server for some resource or service.
+ 2. Processing: The server processes the request. This may involve querying a database, performing computations, or interacting with other services.
+ 3. Response: The server sends the requested resource or the result of the computation back to the client.
+
+Advantages of the Client-Server Model
+ - Centralization: Servers centralize the business logic, making it easier to maintain and update the system.
+ - Scalability: Clients can be easily added or removed without significantly affecting the server.
+ - Security: Servers can enforce security policies and control access to resources.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -232,7 +257,7 @@ b) Horizontal
 
 HLD:
 - Vertical vs Horizontal Scaling: DONE
-- Client-Server Architecture: TODO:
+- Client-Server Architecture: DONE
 - Load Balancer: DONE
 - Caching: TODO:
 - Database: DONE
