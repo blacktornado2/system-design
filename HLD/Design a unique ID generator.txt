@@ -1,0 +1,10 @@
+Why do we need unique IDs
+A simple solution and its problems
+Multi Master Replication
+Using UUIDs
+Ticket serverr approach
+Twitter snowflake method
+
+
+What are UUIDs?
+How to generate UUID?

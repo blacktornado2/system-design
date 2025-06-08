@@ -285,3 +285,21 @@ HLD:
 - Scale from 0 to 1 million: DONE
 - Back of the envelope estimation(Capacity Estimation): DONE
 - Partitioning and Sharding: DONE
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+System Design Template:
+ 1. Functional Requirements
+ 2. Non-Functional Requirements
+ 3. API Design
+ 4. System Design
+ 5. Deep Dive(follow up questions if time permits)
+
+ 
