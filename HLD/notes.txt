@@ -1,6 +1,8 @@
 ------------------------------------------ System Design ------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 
+REF: https://systemdesignschool.io/primer#introduction(basic concepts)
+REF: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file(deep dive)
 
 Vertical Scaling vs Horizontal Scaling
 
@@ -301,5 +303,3 @@ System Design Template:
  3. API Design
  4. System Design
  5. Deep Dive(follow up questions if time permits)
-
- 
