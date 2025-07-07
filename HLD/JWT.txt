@@ -1,0 +1,82 @@
+JSON Web Token(JWT):
+
+ - It is an open standard(RFC 7519) used for securley transmitting info as a JSON object
+ - Commonly used for authentication and authorization
+ - Compact
+ - URL safe
+ - Self-contained 
+
+
+# Structure of JWT:   <Header>.<Payload>.<Signature>
+
+
+1. Header:
+ - Type of token and signing algorithm used
+    Ex:
+    {
+        "alg": "HS256",
+        "typ": "JWT"
+    }
+
+
+2. Payload:
+ - Contains the actual data (claims). Claims can be predefined or custom
+    Ex:
+    {
+        "sub": "1234567890",  // Subject (user ID)
+        "name": "John Doe",
+        "role": "student",
+        "iat": 1516239022      // Issued at (timestamp)
+    }
+
+
+Header and Payload are not encrypted, just base64url encoded
+Signature is encrypted(Need a private key to check this)
+
+
+3. Signature:
+ - Used to verify the token wasn't tampered with.
+ - It is created by hashing the header and payload with a secret (or private key) using the algorithm specified.
+Ex: HMACSHA256(
+        base64UrlEncode(header) + "." + base64UrlEncode(payload),
+        secret
+    )
+
+
+# How JWT Works (Authentication Flow)
+    1. User logs in with username/password.
+    2. Server verifies credentials and creates a JWT.
+    3. Server sends JWT back to the client.
+    4. Client stores the JWT (typically in localStorage or cookies).
+    5. For subsequent requests, client sends the JWT in the Authorization header:
+    Like this: Authorization: Bearer <JWT>
+    7. Server validates the token and grants or denies access.
+
+
+# Why Use JWT?
+  Advantages:
+    - Stateless: No need to store session on server.
+    - Scalable: Perfect for microservices.
+    - Portable: Easy to send via HTTP headers.
+
+  Disadvantages:
+    - Token cannot be easily revoked (without a token blacklist).
+    - If the secret is compromised, the tokens can be forged.
+
+
+# Bonus: What does the signature protect?
+    The signature ensures:
+    - Integrity: If someone changes the header or payload, the signature won't match.
+    - Authenticity: Only someone with the secret key can generate a valid signature
+
+
+Advanced:
+ 
+# How JSON is converted to that string(base64url encoded):
+1. JSON -> String(JSON.stringify)
+2. String -> base64 encoded
+3. base64 encoded -> base64url encoded
+NOTE: base64url = base64 + url safety checks
+
+base64URLencoding summary:
+numbers,aplhabets -> ASCII -> Bytes -> Split bits -> convert to Base64 characters 
