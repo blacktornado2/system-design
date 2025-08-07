@@ -4,34 +4,44 @@
 REF: https://systemdesignschool.io/primer#introduction(basic concepts)
 REF: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file(deep dive)
 
+ - Put all the moving parts of a system together: DB, API, Caching, Load Balancing, Servers, Queue
+ - System design is all about finding the right tradeoffs
+ - Balance competing priorities: speed vs. cost, consistency vs. availability, simplicity vs. flexibility
+ - Handle challenges like scalability, fault tolerance and performance
+ - Skills required: Problem-solving, Big picture thinking, trade-off analysis, communication, adaptability
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
 Vertical Scaling vs Horizontal Scaling
 
 Vertical Scaling: Upgrading current machine to make it more powerful
-Simple to implement, Easier to manage
-Load balancing not required
-Single point of failure
-Inter process communication: very fast
-Data consistent
-Hardware limit
-Small no. of users
+ - Simple to implement, Easier to manage
+ - Load balancing not required
+ - Single point of failure
+ - Inter process communication: very fast
+ - Data consistent
+ - Hardware limit
+ - Small no. of users
 
 Horizontal Scaling: Buy more machines
-More complex management
-Load balancing required
-Resilient
-Network call(RPC): slow as compared to inter process communication
-Data inconsistency
-No hardware limit
-Huge number of users
-Decreases latency as client can connect to their nearest server
+ - More complex management
+ - Load balancing required
+ - Resilient
+ - Network call(RPC): slow as compared to inter process communication
+ - Data inconsistency
+ - No hardware limit
+ - Huge number of users
+ - Decreases latency as client can connect to their nearest server
 
 Load balancing: The process of balancing the load evenly on all servers
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Client-Server Model
-The Client-Server Model is a distributed application structure that partitions tasks or workloads between providers of a resource or service, called servers, and service requesters, called clients. 
-Typically, clients and servers communicate over a network, making it possible for users to access services and resources remotely.
+Client - Server Model
+ - The Client - Server Model is a distributed application structure that partitions tasks or workloads between providers of a resource or service, called servers, and service requesters, called clients. 
+ - Typically, clients and servers communicate over a network, making it possible for users to access services and resources remotely.
 
 Interaction Process
 The interaction between a client and server can be broken down into the following steps:
@@ -287,7 +297,22 @@ HLD:
 - Scale from 0 to 1 million: DONE
 - Back of the envelope estimation(Capacity Estimation): DONE
 - Partitioning and Sharding: DONE
+- JWT: DONE
 
+Networking:
+ - Application Layer:
+  - HTTP/HTTPS protocols
+  - REST vs GraphQL vs gRPC/ API design
+  - RESTful Semantics
+  - DNS resolution
+  - Websockets vs SSE
+ - Transport Layer: 
+  - TCP
+  - UDP
+  - Request response cycle
+ - Network Layer:
+  - Load balancing
+  - Firewalls, ACLs
 
 
 
@@ -295,11 +320,18 @@ HLD:
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+How are System Design Interviews Evaluated ?
+1. Problem Solving: Identify & prioritise the core challenges
+2. Solution Design: Create scalable architectures with balanced trade-offs
+3. Technical Excellence: Demonstrate deep knowledge and expertise
+4. Communication: Clearly explain complex concepts to stakeholders
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 System Design Template:
  1. Functional Requirements
  2. Non-Functional Requirements
- 3. API Design
- 4. System Design
- 5. Deep Dive(follow up questions if time permits)
+ 3. Core entities(tables in the DB e.g. User, )
+ 4. API Design
+ 5. High Level Design
+ 6. Deep Dive(follow up questions if time permits)

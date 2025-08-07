@@ -1,8 +1,19 @@
+1. TypeScript & OOP Fundamentals
+2. KISS, YAGNI, SOC & DRY Principles
+3. SOLID Principles
+4. Design Patterns
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 How to write good code:
 1. Readable
 2. Extensibility
 3. Correctness
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # SOLID principles
@@ -19,6 +30,12 @@ Advantages of SOLID principles:
 - Easy to understand
 - Flexible software
 - Reduce Complexity
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 Single Responsibility Principle
 A class should have only 1 reason to change

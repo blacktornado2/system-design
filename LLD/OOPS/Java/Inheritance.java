@@ -1,3 +1,4 @@
+package Java;
 // * Inheritance
 //   Concept: 
 // - A mechanism where a new class (subclass or derived class) inherits properties (fields) and behaviors (methods) from an existing class (superclass or base class). 

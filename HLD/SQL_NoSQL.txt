@@ -1,3 +1,8 @@
+Learn SQL: 
+ - https://www.w3schools.com/sql/default.asp
+ - https://bytebytego.com/guides/what-is-the-best-way-to-learn-sql/
+
+
 SQL and NoSQL
 
 SQL(Structured Query Language)

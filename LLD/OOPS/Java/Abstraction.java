@@ -1,3 +1,4 @@
+package Java;
 // Concept: Hiding the complex implementation details and showing only the essential features or functionalities to the user.
 // It focuses on what an object does rather than how it does it. Abstraction helps manage complexity.
 

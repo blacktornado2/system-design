@@ -1,0 +1,38 @@
+OOP -> Object Oriented Programming
+ - OOP is a way of structuring your code around objects, which bundle together data (properties) and the behavior that acts on that data (methods)
+
+Some basic terminologies:
+
+Class
+ - Class: blueprint of an object(template)
+ - Class = procedures(methods) + properties(attributes)
+ - A class is required to create an object
+ - A class can create any no. of objects
+
+Object: instance of a class
+ - object: dog. Properties: age, breeed, color. Behaviours: bark, sleep, eat
+ - object: car. Properties: color, type, brand. Behavious: applyBreeaks, Drive, IncreaseSpeed
+ - Ex: Creating a new object: User ankit = new User();
+ - new: Keyword used to allocate memory for the object.
+
+There are 4 pillars of OOPS:
+
+1. Encapsulation:
+ - Encapsulation is the practice of bundling an object's data (properties) and methods together within a single unit (a class).
+ - Think of a car. You don't need to know how the engine's combustion works to drive it. You just use the pedals and steering wheel (the public interface)
+ - In TypeScript, we use access modifiers: public, private(same class), protected(same class and any subclass)
+
+2. Abstraction:
+ - Abstraction means hiding complex implementation details and showing only the essential features of the object. It's about the "what" an object does, not the "how" it does it. We achieve this in TypeScript using abstract classes and interfaces.
+ - Abstract Class: A class that cannot be instantiated on its own. It serves as a base blueprint for other classes. It can contain both abstract methods (with no implementation) and concrete methods (with implementation).
+ - Interface: A contract that defines a set of properties and methods a class "must implement". It contains no implementation details at all.
+
+3. Inheritance
+ - Inheritance allows a class (the child or subclass) to acquire properties and methods from another class (the parent or superclass).
+ - This promotes code reuse. We use the extends keyword.
+
+4. Polymorphism
+ - Polymorphism (from Greek, "many forms") allows us to treat objects of different classes as if they were objects of a common superclass. A single action or method can have different behaviors depending on the object it is acting upon.
+ - This makes our code more flexible and scalable.
+ 
+

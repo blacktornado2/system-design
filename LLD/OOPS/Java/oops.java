@@ -1,3 +1,4 @@
+package Java;
 class Dog {
 
     // Fields (State)

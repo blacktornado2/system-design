@@ -1,1 +1,9 @@
 https://studyalgorithms.com/system-design/databases-system-design/
+
+Storage:
+ - Relational
+ - Document based
+ - Key-value
+ - ACID
+ - BASE
+ - ACID vs BASE
