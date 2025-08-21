@@ -2,6 +2,7 @@
 2. KISS, YAGNI, SOC & DRY Principles
 3. SOLID Principles
 4. Design Patterns
+5. Some good problems
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -88,3 +89,16 @@ Open for extension but Closed for modification
 Design pattern: principle for the OOP
 
 Strategy design pattern:
+
+
+Problems:
+1. Design notify-me button functionality
+2. Design Pizza billing system
+3. Design Parking lot
+4. Design Snake and Ladder game
+5. Design Elevator system
+6. Design Logging system
+7. Design Tic-tac-toe game
+8. Design Book my Show and concurrency handling
+9. Design Vending machine
+10. Design ATM
