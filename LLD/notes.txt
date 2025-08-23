@@ -36,61 +36,6 @@ Advantages of SOLID principles:
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-Single Responsibility Principle
-A class should have only 1 reason to change
-
-Marker entity:
-
-class Marker {
-    String name;
-    String color;
-    int year;
-    int price;
-
-    public Marker(String name, String color, int year, int price) {
-        this.name = name;
-        this.color = color;
-        this.year = year;
-        this.price = price; 
-    }
-}
-
-Invoice entity:
-
-class Invoice {
-
-    private Marker marker;
-    private int quantity;
-
-    public Invoice(Marker marker, int quantity) {
-        this.marker = marker;
-        this.quantity = quantity;
-    }
-
-    public int calculateTotal() {
-        int price = ((marker.price) * this.quantity);
-        return price;
-    }
-
-    public void printInvoice() {
-        // print the Invoice
-    }
-
-    public void saveToDB() {
-        // Save the data into DB
-    }
-}
-
-Open/Closed Principle
-Open for extension but Closed for modification
-
-Design pattern: principle for the OOP
-
-Strategy design pattern:
-
-
 Problems:
 1. Design notify-me button functionality
 2. Design Pizza billing system
@@ -102,3 +47,17 @@ Problems:
 8. Design Book my Show and concurrency handling
 9. Design Vending machine
 10. Design ATM
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Framework
+1. Clarify and Scope Requirements
+2. Define Key Use-cases and APIs
+3. Data Model & Persistence
+4. Core Class Design
+5. Identify & Apply Design Patterns
+6. Sequence for the MAIN flow
+7. Concurrency & consistency
+8. Edge cases & Error handling
+9. Coding
+10. Extensions & Scaling
