@@ -43,3 +43,5 @@ For each question, you should aim to:
 18. **Design a Chess Game:** Model the board, different pieces, and the rules for movement. How would you handle game state and player turns?
 19. **Design an Online Auction System:** Design the backend for an auction site. It should handle creating auctions for items, allowing users to place bids, and determining the winner when the auction ends.
 20. **Design a Food Delivery App (like Swiggy/Zomato):** Model the core functionality, including restaurants, menu items, user orders, delivery partners, and order tracking.
+
+Interview Questions: https://docs.google.com/document/d/10Xg9XW0Yki2NFFaBLZzbbNKHusXHStteslj4zAE3N4I/edit?tab=t.0
