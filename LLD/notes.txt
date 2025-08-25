@@ -1,9 +1,13 @@
-1. TypeScript & OOP Fundamentals
-2. KISS, YAGNI, SOC & DRY Principles
-3. SOLID Principles
-4. Design Patterns
-5. Some good problems
-
+1. TypeScript fundamentals
+2. OOP Fundamentals
+3. KISS, YAGNI, SOC & DRY Principles
+4. SOLID Principles
+5. Design Patterns(Factory, Abstract Factory, Singleton, Observer, Strategy)
+6. UML diagram
+ - https://bytebytego.com/guides/a-cheatsheet-for-uml-class-diagrams/
+ - https://www.lucidchart.com/pages/uml-class-diagram
+ - https://khalilstemmler.com/articles/uml-cheatsheet/
+7. Some good problems
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
