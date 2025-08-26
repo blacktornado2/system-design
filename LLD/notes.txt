@@ -15,7 +15,14 @@ How to write good code:
  - https://bytebytego.com/guides/a-cheatsheet-for-uml-class-diagrams/
  - https://www.lucidchart.com/pages/uml-class-diagram
  - https://khalilstemmler.com/articles/uml-cheatsheet/
-7. Some good problems
+7. Class relationships
+ - Inheritance(is-a)
+ - Association
+ - Composition(part-of)
+ - Aggregation
+ - Dependency
+ - Realisation
+8. Some good problems
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
