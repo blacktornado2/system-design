@@ -279,3 +279,217 @@ console.log(MathHelper.calculateCircumference(10)); // Output: 62.8318
 | **Property** | **camelCase** | `public userName: string;` |
 | **Method** | **camelCase** | `getUserName() { ... }` |
 | **Private Property** | **camelCase** (with `_` prefix) | `private _balance: number;` |
+
+---
+
+# 🎨 Key Class Relationships
+
+This document outlines the most common relationships between classes in Object-Oriented Design (OOD). Understanding these relationships is crucial for building well-structured, maintainable, and scalable software.
+
+---
+
+## 1. Inheritance (Generalization) 👑
+
+* **Relationship:** "is-a"
+* **Analogy 🚗:** A `Car` **is-a** `Vehicle`.
+
+> **Definition:** A subclass (child) inherits the properties and methods of a superclass (parent). It's the strongest relationship, creating a tight coupling between classes. The child class can extend and specialize the parent's functionality.
+
+### TypeScript Example:
+
+```typescript
+// Parent Class (Superclass)
+class Vehicle {
+    constructor(public brand: string) {}
+
+    drive() {
+        console.log("The vehicle is moving.");
+    }
+}
+
+// Child Class (Subclass)
+class Car extends Vehicle {
+    constructor(brand: string, public model: string) {
+        super(brand); // Call the parent constructor
+    }
+
+    honk() {
+        console.log("Beep beep!");
+    }
+}
+
+const myCar = new Car("Toyota", "Corolla");
+myCar.drive(); // Inherited from Vehicle
+myCar.honk();  // Specific to Car
+```
+
+---
+
+## 2. Composition 🧩
+
+* **Relationship:** Strong "part-of"
+* **Analogy 🏠:** A `House` is composed of `Room`s.
+
+> **Definition:** An object is composed of one or more other objects. The "part" objects cannot exist without the "whole" object. The lifecycle of the parts is managed by the whole. If the whole is destroyed, its parts are destroyed too.
+
+### TypeScript Example:
+
+```typescript
+class Engine {
+    start() {
+        console.log("Engine started.");
+    }
+}
+
+// The Car class creates and owns its Engine instance.
+class Car {
+    private engine: Engine;
+
+    constructor() {
+        this.engine = new Engine(); // Engine is created and managed by Car
+    }
+
+    startCar() {
+        this.engine.start();
+        console.log("Car is ready to go.");
+    }
+}
+
+const myCar = new Car();
+// You can't access the engine from outside; its lifecycle is tied to the car.
+myCar.startCar();
+```
+
+---
+
+## 3. Aggregation 🔷
+
+* **Relationship:** Weak "has-a"
+* **Analogy 🏫:** A `Department` **has-a** collection of `Professor`s.
+
+> **Definition:** A specific type of association where an object contains other objects, but the contained objects can exist independently. The lifecycle of the "part" is not tied to the "whole".
+
+### TypeScript Example:
+
+```typescript
+class Professor {
+    constructor(public name: string) {}
+}
+
+// The Department class holds references to Professor objects that are created outside.
+class Department {
+    public professors: Professor[];
+
+    constructor(public name: string, professors: Professor[]) {
+        this.professors = professors; // Professors are passed in, not created by Department
+    }
+}
+
+const profAdams = new Professor("Dr. Adams");
+const profBrown = new Professor("Dr. Brown");
+
+// Professors exist independently.
+const csDepartment = new Department("Computer Science", [profAdams, profBrown]);
+```
+
+---
+
+## 4. Association 🔗
+
+* **Relationship:** "has-a"
+* **Analogy 👨‍⚕️️🧑‍💼:** A `Doctor` **has-a** `Patient`.
+
+> **Definition:** A structural link between two independent objects. Each object has its own lifecycle. This is a more general "has-a" relationship than aggregation.
+
+### TypeScript Example:
+
+```typescript
+class Patient {
+    constructor(public name: string) {}
+}
+
+// A Doctor can be associated with multiple patients.
+class Doctor {
+    public patients: Patient[] = [];
+
+    constructor(public name: string) {}
+
+    addPatient(patient: Patient) {
+        this.patients.push(patient);
+    }
+}
+
+const drSmith = new Doctor("Dr. Smith");
+const patientJohn = new Patient("John Doe");
+
+// We associate the patient with the doctor.
+drSmith.addPatient(patientJohn);
+```
+
+---
+
+## 5. Dependency 💧
+
+* **Relationship:** "uses-a"
+* **Analogy 🛒:** A `ShoppingCart` **uses-a** `PaymentProcessor`.
+
+> **Definition:** The weakest relationship. A class depends on another if it uses it temporarily, typically as a method parameter, return type, or local variable. There is no structural link between the classes.
+
+### TypeScript Example:
+
+```typescript
+class Logger {
+    log(message: string) {
+        console.log(`[LOG]: ${message}`);
+    }
+}
+
+// The TaskManager uses a Logger to perform an action, but doesn't store it.
+class TaskManager {
+    performTask(logger: Logger) { // Dependency is passed as a parameter
+        logger.log("Starting task...");
+        // ... task logic ...
+        logger.log("Task finished.");
+    }
+}
+
+const myLogger = new Logger();
+const taskManager = new TaskManager();
+
+// The manager depends on the logger to complete its method.
+taskManager.performTask(myLogger);
+```
+
+---
+
+## 6. Realization (Implementation) 📜
+
+* **Relationship:** "can-do-this"
+* **Analogy 🔌:** A `UK_PowerSocket` class *implements* the `PowerOutlet` interface.
+
+> **Definition:** A class implements an `interface`, guaranteeing that it will provide the functionality (methods and properties) defined by that interface. It's a contract that the class agrees to fulfill.
+
+### TypeScript Example:
+
+```typescript
+// The interface defines a "contract" for what a class can do.
+interface Printable {
+    print(): string;
+}
+
+// This class "realizes" or "implements" the Printable interface.
+class Report implements Printable {
+    constructor(public content: string) {}
+
+    print(): string {
+        return `Report Content: ${this.content}`;
+    }
+}
+
+class Invoice implements Printable {
+    constructor(public amount: number) {}
+
+    print(): string {
+        return `Invoice Amount: $${this.amount}`;
+    }
+}

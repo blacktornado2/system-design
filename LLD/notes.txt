@@ -1,21 +1,21 @@
-1. TypeScript fundamentals
+How to write good code:
+1. Readable
+2. Extensibility
+3. Correctness
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+1. TypeScript fundamentals(https://www.w3schools.com/typescript/index.php)
 2. OOP Fundamentals
 3. KISS, YAGNI, SOC & DRY Principles
-4. SOLID Principles
+4. SOLID Principles(https://cloudaffle.com/series/solid-design-principles/what-is-solid/)
 5. Design Patterns(Factory, Abstract Factory, Singleton, Observer, Strategy)
 6. UML diagram
  - https://bytebytego.com/guides/a-cheatsheet-for-uml-class-diagrams/
  - https://www.lucidchart.com/pages/uml-class-diagram
  - https://khalilstemmler.com/articles/uml-cheatsheet/
 7. Some good problems
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-How to write good code:
-1. Readable
-2. Extensibility
-3. Correctness
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -24,17 +24,23 @@ How to write good code:
 # SOLID principles
 
 S - Single Responsibility Principle
-O - Open/Closed Principle
-L - Liskov Substitution
-I - INtergace Segment
-D - Dependency Inversion
+O - Open/Closed Principle(Open for extension, Closed for modification)
+L - Liskov Substitution Principle
+I - Interface Segregation Principle
+D - Dependency Inversion Principle
 
 Advantages of SOLID principles:
 - Avoid Duplicate code
-- Easy to maintain
+- Easy to maintain and extend
 - Easy to understand
 - Flexible software
 - Reduce Complexity
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Design Patterns
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------

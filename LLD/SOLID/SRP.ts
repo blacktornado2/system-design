@@ -1,10 +1,14 @@
 // A class should have only one reason to change
+
 // If a class has more than one responsibility, it becomes coupled, and a change to one responsibility can affect the others.
-// This coupling can make the code more difficult to understand, modify, and maintain.
-// By splitting large classes into smaller ones each with a single responsibility
+// This coupling can make the code more difficult to understand, modify, test and maintain
+// Apply this principle by splitting large classes into smaller ones each with a single responsibility
 
 // User class can handle both user management and user authentication, but shouldn't be designed to
 // Break this work into a separate class -> UserAuthentication
+
+// Example-1
+
 class User {
     name: string;
     email: string;
@@ -28,6 +32,7 @@ class UserAuthentication {
     }
 }
 
+// Example-2
 
 class BlogPost {
     title: string;
@@ -75,3 +80,19 @@ class BlogPostDisplay {
 }
 
 // createPost, deletePost, updatePost are single responsibily -> managing blog post
+
+// Example-3
+
+class UserDB {
+  saveUser(user: User) {
+    // Implementation here
+  }
+}
+
+class EmailService {
+  sendWelcomeEmail(user: User) {
+    // Implementation here
+  }
+}
+
+// In the example above, this is a dependency relationship(weak uses-a)
