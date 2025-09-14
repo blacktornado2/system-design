@@ -1,8 +1,10 @@
 ------------------------------------------ System Design ------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 
-REF: https://systemdesignschool.io/primer#introduction(basic concepts)
-REF: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file(deep dive)
+REF: Overview: https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction
+REF: Basic concepts: https://systemdesignschool.io/primer#introduction
+REF: Deep dive: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file
+
 
  - Put all the moving parts of a system together: DB, API, Caching, Load Balancing, Servers, Queue
  - System design is all about finding the right tradeoffs
@@ -10,9 +12,78 @@ REF: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file(deep
  - Handle challenges like scalability, fault tolerance and performance
  - Skills required: Problem-solving, Big picture thinking, trade-off analysis, communication, adaptability
 
-
 ---------------------------------------------------------------------------------------------------------------------
 
+How are System Design Interviews Evaluated ?
+1. Problem Solving: Identify & prioritise the core challenges
+2. Solution Design: Create scalable architectures with balanced trade-offs according to requirements
+3. Technical Excellence: Demonstrate deep knowledge and expertise
+4. Communication: Clearly explain complex concepts to stakeholders
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+System Design Template:
+ 1. Functional Requirements
+ 2. Non-Functional Requirements
+ 3. Core entities(tables in the DB e.g. User, )
+ 4. API Design
+ 5. High Level Design
+ 6. Deep Dive(follow up questions if time permits)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Problems:
+HLD:
+
+ - Vertical vs Horizontal Scaling: DONE
+ - Client-Server Architecture: DONE
+ - Load Balancer: DONE
+ - Caching:
+ - Database: DONE
+ - SQL/NoSQL: DONE
+ - Creating Diagrams: DONE
+ - Indexing in Database:  
+ - Forward and Reverse Proxy: DONE
+ - Message Queue and CDN:  
+ - CAP Theorem:  
+ - API Gateway:  
+ - Network Protocols:  
+ - Microservices design patterns:  
+ - SAGA pattern:  
+ - Consistent Hashing: DONE
+ - Strangler Pattern:  
+ - CQRS pattern:  
+ - Scale from 0 to 1 million: DONE
+ - Back of the envelope estimation(Capacity Estimation): DONE
+ - Partitioning and Sharding: DONE
+ - JWT: DONE
+
+ - Design a rate limiter: DONE
+ - Design a unique ID Generator: DONE
+ - Design a notification system | SMS, Email and Push Notification: DONE
+ - Design a newsfeed | FB, IG, Reddit: DONE
+ - Design Dropbox | iCloud | Gdrive | Onedrive:
+ - Design URL shortener: DONE
+ - Design Apache Kafka:
+ - Design Message Queue:
+
+
+Networking:
+ - Application Layer:
+  - HTTP/HTTPS protocols
+  - REST vs GraphQL vs gRPC/ API design
+  - RESTful Semantics
+  - DNS resolution
+  - Websockets vs SSE
+ - Transport Layer: 
+  - TCP
+  - UDP
+  - Request response cycle
+ - Network Layer:
+  - Load balancing
+  - Firewalls, ACLs
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Vertical Scaling vs Horizontal Scaling
 
@@ -181,27 +252,6 @@ Observability
 
 Monitoring
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -240,8 +290,7 @@ No service can query the DB of another service
 
 Scale from 0 to 1 Million users!
 
-
-1. Single Server
+1. Start with a single Server
 
 2. Application & DB server separation
 
@@ -264,74 +313,3 @@ Does caching of static data
 9. DB scaling
 a) Vertical
 b) Horizontal
-
-
-
-HLD:
-- Vertical vs Horizontal Scaling: DONE
-- Client-Server Architecture: DONE
-- Load Balancer: DONE
-- Caching: TODO:
-- Database: DONE
-- SQL/NoSQL: DONE
-- Creating Diagrams: DONE
-- Indexing in Database: TODO:
-- Forward and Reverse Proxy: DONE
-- Message Queue and CDN: TODO:
-- CAP Theorem: TODO:
-- Design a rate limiter: TODO:
-- Design a unique ID Generator: TODO:
-- URL shortener: DONE
-- Design a notification system | SMS, Email and Push: TODO:
-- Design Dropbox | Colud | Gdrive | Onedrive: TODO:
-- Design a newsfeed | FB, IG, Reddit: TODO:
-- Consistent Hashing: DONE
-- Kafka: TODO:
-- API Gateway: TODO:
-
-- Network Protocols: TODO:
-- Microservices design patterns: TODO:
-- SAGA pattern: TODO:
-- Strangler Pattern: TODO:
-- CQRS pattern: TODO:
-- Scale from 0 to 1 million: DONE
-- Back of the envelope estimation(Capacity Estimation): DONE
-- Partitioning and Sharding: DONE
-- JWT: DONE
-
-Networking:
- - Application Layer:
-  - HTTP/HTTPS protocols
-  - REST vs GraphQL vs gRPC/ API design
-  - RESTful Semantics
-  - DNS resolution
-  - Websockets vs SSE
- - Transport Layer: 
-  - TCP
-  - UDP
-  - Request response cycle
- - Network Layer:
-  - Load balancing
-  - Firewalls, ACLs
-
-
-
-
-
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------
-How are System Design Interviews Evaluated ?
-1. Problem Solving: Identify & prioritise the core challenges
-2. Solution Design: Create scalable architectures with balanced trade-offs
-3. Technical Excellence: Demonstrate deep knowledge and expertise
-4. Communication: Clearly explain complex concepts to stakeholders
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-System Design Template:
- 1. Functional Requirements
- 2. Non-Functional Requirements
- 3. Core entities(tables in the DB e.g. User, )
- 4. API Design
- 5. High Level Design
- 6. Deep Dive(follow up questions if time permits)
