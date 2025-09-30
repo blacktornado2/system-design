@@ -6,8 +6,8 @@ REF: Basic concepts: https://systemdesignschool.io/primer#introduction
 REF: Deep dive: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file
 
 
- - Put all the moving parts of a system together: DB, API, Caching, Load Balancing, Servers, Queue
  - System design is all about finding the right tradeoffs
+ - Put all the moving parts of a system together: DB, API, Caching, Load Balancing, Servers, Queue
  - Balance competing priorities: speed vs. cost, consistency vs. availability, simplicity vs. flexibility
  - Handle challenges like scalability, fault tolerance and performance
  - Skills required: Problem-solving, Big picture thinking, trade-off analysis, communication, adaptability
@@ -23,14 +23,44 @@ How are System Design Interviews Evaluated ?
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 System Design Template:
- 1. Functional Requirements
- 2. Non-Functional Requirements
- 3. Core entities(tables in the DB e.g. User, )
- 4. API Design
+ 1. Clarify Requirements(Functional/Non-functional)
+ 2. Core entities(tables in the DB e.g. User, Friends, Settings)
+ 3. API Design
+ 4. Data flow
  5. High Level Design
  6. Deep Dive(follow up questions if time permits)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The Fundamentals:
+1. Storage(relational, document based, key-value, ACID, BASE, access patterns, consistency requirements)
+2. Scalability(Scale compute, scale storage: sharding, consistent hashing)
+3. Networking
+4. Latency, Throughput & Performance(RAM, SSD, HDD, same/cross region network call)
+5. Fault tolerance & Redundancy
+6. CAP theorem
+
+
+API design: https://www.hellointerview.com/learn/system-design/core-concepts/api-design
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Networking:
+ - Application Layer:
+  - HTTP/HTTPS protocols
+  - REST vs GraphQL vs gRPC/ API design
+  - RESTful Semantics
+  - DNS resolution
+  - Websockets vs SSE
+ - Transport Layer: 
+  - TCP
+  - UDP
+  - Request response cycle
+ - Network Layer:
+  - Load balancing
+  - Firewalls, ACLs
+
 
 Problems:
 HLD:
@@ -58,30 +88,22 @@ HLD:
  - Partitioning and Sharding: DONE
  - JWT: DONE
 
+ - Design URL shortener: DONE
+ - Design Dropbox | iCloud | Gdrive | Onedrive:
+ - Design Ticketmaster: 
+ - Design a newsfeed | FB, IG, Reddit: DONE
+ - Design Whatsapp:
+ - Design LeetCode:
+ - Design Uber:
+ - Design webcrawler:
+ - Design Ad Click Aggregator:
+ - Design Post Search
  - Design a rate limiter: DONE
  - Design a unique ID Generator: DONE
  - Design a notification system | SMS, Email and Push Notification: DONE
- - Design a newsfeed | FB, IG, Reddit: DONE
- - Design Dropbox | iCloud | Gdrive | Onedrive:
- - Design URL shortener: DONE
  - Design Apache Kafka:
  - Design Message Queue:
 
-
-Networking:
- - Application Layer:
-  - HTTP/HTTPS protocols
-  - REST vs GraphQL vs gRPC/ API design
-  - RESTful Semantics
-  - DNS resolution
-  - Websockets vs SSE
- - Transport Layer: 
-  - TCP
-  - UDP
-  - Request response cycle
- - Network Layer:
-  - Load balancing
-  - Firewalls, ACLs
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
