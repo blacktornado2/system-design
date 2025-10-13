@@ -1,11 +1,14 @@
 ------------------------------------------ System Design ------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------
 
-REF: Overview: https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction
-REF: Basic concepts: https://systemdesignschool.io/primer#introduction
-REF: Deep dive: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file
+References:
+ - Overview: https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction
+ - Basic concepts: https://systemdesignschool.io/primer#introduction
+ - Deep dive: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file
 
+---------------------------------------------------------------------------------------------------------------------
 
+Philosophy:
  - System design is all about finding the right tradeoffs
  - Put all the moving parts of a system together: DB, API, Caching, Load Balancing, Servers, Queue
  - Balance competing priorities: speed vs. cost, consistency vs. availability, simplicity vs. flexibility
@@ -16,7 +19,7 @@ REF: Deep dive: https://github.com/donnemartin/system-design-primer?tab=readme-o
 
 How are System Design Interviews Evaluated ?
 1. Problem Solving: Identify & prioritise the core challenges
-2. Solution Design: Create scalable architectures with balanced trade-offs according to requirements
+2. Solution Design: Create scalable architectures with balanced trade-offs, according to requirements
 3. Technical Excellence: Demonstrate deep knowledge and expertise
 4. Communication: Clearly explain complex concepts to stakeholders
 
@@ -45,6 +48,22 @@ API design: https://www.hellointerview.com/learn/system-design/core-concepts/api
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Data Modelling:
+A data model defines how your data is:
+ - structured
+ - stored
+ - related
+
+Database Model Options:
+ 1. Relational Database
+ 2. Document Database
+ 3. Key-Value Store
+ 4. Wide-column Database
+ 5. Graph Database
+
+Ref: https://www.hellointerview.com/learn/system-design/core-concepts/data-modeling
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Networking:
  - Application Layer:
