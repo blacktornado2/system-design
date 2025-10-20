@@ -3,7 +3,7 @@
 
 References:
  - Overview: https://www.hellointerview.com/learn/system-design/in-a-hurry/introduction
- - Basic concepts: https://systemdesignschool.io/primer#introduction
+ - Additional practice: https://systemdesignschool.io/primer#introduction
  - Deep dive: https://github.com/donnemartin/system-design-primer?tab=readme-ov-file
 
 ---------------------------------------------------------------------------------------------------------------------
@@ -25,30 +25,36 @@ How are System Design Interviews Evaluated ?
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-System Design Template:
- 1. Clarify Requirements(Functional/Non-functional)
- 2. Core entities(tables in the DB e.g. User, Friends, Settings)
- 3. API Design
+System Design Framework:
+ 1. Clarify Requirements (Functional/Non-functional)
+ 2. Core entities (tables in the DB e.g. User, Friends, Settings / nouns in the functional requirements and choose DB)
+ 3. API Design (REST / GraphQL / RPC)
  4. Data flow
  5. High Level Design
- 6. Deep Dive(follow up questions if time permits)
+ 6. Deep Dive (follow up questions if time permits)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-The Fundamentals:
-1. Storage(relational, document based, key-value, ACID, BASE, access patterns, consistency requirements)
-2. Scalability(Scale compute, scale storage: sharding, consistent hashing)
-3. Networking
-4. Latency, Throughput & Performance(RAM, SSD, HDD, same/cross region network call)
-5. Fault tolerance & Redundancy
-6. CAP theorem
+1. Requirements
 
+Functional Requirements(Features):
+ - Features that the system must have to satisfy the needs of the user
+ - Take 3-4 functional requirements only
 
-API design: https://www.hellointerview.com/learn/system-design/core-concepts/api-design
+Non-functional requirements(Qualities):
+ - CAP theorem(consistency vs. availability)
+ - Latency (as low as possible)
+ - Scalability(Sharding, Partitioning, Async Queues, Load Shedding, Batching writes)
+ - Security
+ - Reliability
+ - Fault tolerance
+ - Read / Write ratio 
+ - Scalability to handle surges at popular events
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Data Modelling:
+2. Core Entities / Data Modelling:
+
 A data model defines how your data is:
  - structured
  - stored
@@ -62,6 +68,20 @@ Database Model Options:
  5. Graph Database
 
 Ref: https://www.hellointerview.com/learn/system-design/core-concepts/data-modeling
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. API Design: https://www.hellointerview.com/learn/system-design/core-concepts/api-design
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The Fundamentals:
+1. Storage(relational, document based, key-value, ACID, BASE, access patterns, consistency requirements): https://www.hellointerview.com/learn/system-design/core-concepts/data-modeling
+2. Scalability(Scale compute, scale storage: sharding, consistent hashing)
+3. Networking: https://www.hellointerview.com/learn/system-design/core-concepts/networking-essentials
+4. Latency, Throughput & Performance(RAM, SSD, HDD, same/cross region network call)
+5. Fault tolerance & Redundancy
+6. CAP theorem: https://www.hellointerview.com/learn/system-design/core-concepts/cap-theorem
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -80,6 +100,7 @@ Networking:
   - Load balancing
   - Firewalls, ACLs
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Problems:
 HLD:
@@ -107,22 +128,21 @@ HLD:
  - Partitioning and Sharding: DONE
  - JWT: DONE
 
- - Design URL shortener: DONE
- - Design Dropbox | iCloud | Gdrive | Onedrive:
- - Design Ticketmaster: 
- - Design a newsfeed | FB, IG, Reddit: DONE
+ - Design URL shortener | bit.ly | tinyurl : ✅
+ - Design Dropbox | iCloud | Gdrive | Onedrive: ✅
+ - Design Ticketmaster | BookMyShow: 
+ - Design a newsfeed | FB, IG, Reddit, Twitter: ✅
  - Design Whatsapp:
  - Design LeetCode:
  - Design Uber:
  - Design webcrawler:
  - Design Ad Click Aggregator:
  - Design Post Search
- - Design a rate limiter: DONE
- - Design a unique ID Generator: DONE
- - Design a notification system | SMS, Email and Push Notification: DONE
+ - Design a rate limiter: ✅
+ - Design a unique ID Generator: ✅
+ - Design a notification system | SMS, Email and Push Notification: ✅
  - Design Apache Kafka:
  - Design Message Queue:
-
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 

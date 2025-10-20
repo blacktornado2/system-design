@@ -1,8 +1,21 @@
 URL shortener:
-1. Shorten URL
-2. Re-direction of URL
 
 Functional Requirements:
+ - Users should be able to submit a long URL and receive a shortened version.
+ - Users should be able to access the original URL by using the shortened URL.
+
+Below the line (out of scope):
+ - User authentication and account management.
+ - Analytics on link clicks (e.g., click counts, geographic data)
+
+
+Non-Functional Requirements:
+ - Low latency
+ - Highly scalable
+ - Highly available (Availability >> Consistency)
+
+
+Back of the envelope estimation:
  - User base: 1 Billion
  - 1(shortened):10(re-direction)
  - 1 million shorten URL requests
@@ -13,22 +26,26 @@ Functional Requirements:
  - We can use SQL database
 
 
-Non-Functional Requirements:
- - Low latency
- - Highly scalable
- - Highly available
+Core Entities:
+ - User
+ - Short URL
+ - Long URL
 
 
- API's available:
+API's:
+    1. Shorten the URL
+    method: POST, URL: /api/v1/shorten/:{url}
+    HTTP: 200, shortenedURL
 
+    2. Re-direction to the original URL
+    method: GET, URL: /api/v1/redirect/:{shortURL}
+    HTTP: 301 (permanent re-direct, caching)
+    302(temporary re-direct, no caching): Preferred as it will check server every time
 
- 1. Shorten the URL
- method: POST, URL: /api/v1/shorten/:{url}
- HTTP: 200, shortenedURL
+Important consideration:
+ - An important consideration in this system is the significant imbalance between read and write operations. 
+ - The read-to-write ratio is heavily skewed towards reads, as users frequently access shortened URLs, while the creation of new short URLs is comparatively rare. 
+ - For instance, we might see 1000 clicks (reads) for every 1 new short URL created (write).
+ - This asymmetry will significantly impact our system design, particularly in areas such as caching strategies, database choice, and overall architecture.
 
- 2. Re-direction to the original URL
- method: GET, URL: /api/v1/redirect/:{shortURL}
- HTTP: 301(re-direct)
-
-
- Custom Hashing Function?
+Custom Hashing Function?

@@ -41,3 +41,6 @@ Network breaks between A and B (partition).
 You now must choose:
  - Block reads from B until it syncs with A (Consistency is there, but no availability)
  - Allow reads from B even if it returns old data (Availability is there, but no consistency)
+
+ Advanced: We can choose both consistency and availability in a system but for different parts of the system. 
+ For example, strong consistency for booking ticket, high availability for search and view events
