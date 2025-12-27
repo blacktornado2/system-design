@@ -1,10 +1,11 @@
 How to write good code:
-1. Readable
-2. Extensibility
-3. Correctness
+1. Correctness
+2. Readable
+3. Extensibility
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+The principles and concepts are language agnostic :)
 
 1. TypeScript fundamentals(https://www.w3schools.com/typescript/index.php)
 2. OOP Fundamentals
