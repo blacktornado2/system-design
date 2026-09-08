@@ -1,7 +1,164 @@
 
+Blog: https://www.hellointerview.com/learn/system-design/core-concepts/message-queues
+Video: https://www.youtube.com/watch?v=1ISRd0bS714
+Excalidraw: https://app.excalidraw.com/l/56zGeHiLyKZ/47SJUcqLNbg
+
+
+         +----------+          +-------------+            +----------+
+         | Producer |  ---->   |             |   ---->    | Consumer |
+         +----------+  send    |   Message   |   pull     +----------+
+         +----------+ & forget |    Queue    | & process  +----------+
+         | Producer |  ---->   |   (Broker)  |   ---->    | Consumer |
+         +----------+          +-------------+            +----------+
+
 
 
 Message Queue:
-
+ - A message queue is a component that allows services to communicate asynchronously by sending messages to each other via a broker, instead of calling each other directly.
+ - A "Producer" writes a message to the queue, and a "Consumer" reads it and processes it, independently and at its own pace.
+ - Its main purpose is to handle async work, decouple services, absorb traffic spikes, and improve reliability and scalability of a system.
+ - We can scale producers and consumers independently
 Ex: RabbitMQ, Apache Kafka, Amazon SQS
 
+
+
+🔧 Key Functions of a Message Queue
+ - Decoupling: Producer and Consumer don't need to know about each other or be available at the same time.
+ - Buffering / Load Leveling: Absorbs sudden bursts of traffic so downstream services aren't overwhelmed(smooths out spiky traffic).
+ - Async Processing: Producer doesn't have to wait for the consumer to finish processing(fire and forget).
+ - Reliability: Messages aren't lost if a consumer is down, they just wait in the queue till the consumer is back up.
+ - Retry / Failure Handling: Failed messages can be retried or moved to a Dead Letter Queue(DLQ) instead of being lost.
+
+
+
+📊 Core Concepts
+ - Producer: The service/client that creates and sends a message.
+ - Consumer: The service/client that reads and processes a message.
+ - Broker: The middleman server that stores and forwards messages(e.g. Kafka, RabbitMQ, SQS).
+ - Queue/Topic: A named channel where messages are published to and consumed from.
+ - Message: The unit of data being sent, usually has a payload + metadata(id, timestamp, headers).
+ - Acknowledgement(ACK): Consumer tells the broker "I've processed this message successfully", so broker can safely remove/mark it as done.
+ - Dead Letter Queue(DLQ): A separate queue where messages that repeatedly fail processing are moved to, instead of being retried forever or lost.
+
+
+
+🧱 Messaging Models
+ 1. Point-to-Point (Queue model): One producer sends a message, only ONE consumer picks it up and processes it(even if there are multiple consumers listening, e.g. worker pool). Message is removed once processed(e.g. SQS, RabbitMQ queues).
+ 2. Publish-Subscribe (Pub/Sub model): One producer publishes a message to a topic, and it is delivered to ALL subscribers/consumers listening on that topic. Useful for fan-out/broadcast use cases(e.g. Kafka topics, SNS, Redis Pub/Sub).
+
+    Point-to-Point (only ONE consumer gets each message):        Publish-Subscribe (EVERY subscriber gets each message):
+
+                     +--> [Consumer A]                                              +--> [Subscriber A]
+    [Producer] --> Queue --> [Consumer B]         [Producer] --> Topic ------------>+--> [Subscriber B]
+                     +--> [Consumer C]                                              +--> [Subscriber C]
+
+
+
+📬 Delivery Models
+ - Push Model: Broker pushes the message to the consumer as soon as it arrives. Faster, but consumer can get overwhelmed if it can't keep up(e.g. RabbitMQ).
+ - Pull Model: Consumer polls the broker at its own pace, and asks for messages when it's ready. Consumer controls the load(e.g. Kafka, SQS).
+
+    Push:  Broker  --- msg, msg, msg --->  Consumer        (broker decides the pace, risk of overwhelming consumer)
+    Pull:  Broker  <--- "got any msgs?" ---  Consumer      (consumer decides the pace, safer under load)
+           Broker  ---     msg      --->  Consumer
+
+
+
+✅ Delivery Guarantees
+ - At-most-once: Message is delivered zero or one time, it may be lost but is never duplicated(fire and forget, no retries).
+ - At-least-once: Message is guaranteed to be delivered, but may be delivered more than once(consumer ACKs after processing, if ACK is lost, message is redelivered). Most common guarantee used.
+ - Exactly-once: Message is delivered and processed exactly one time, hardest to achieve, needs deduplication/idempotency on the consumer side(see idempotency.txt) combined with at-least-once delivery + a dedup table.
+
+   +-----------------+---------------+-------------------+-----------------------------------------+
+   | Guarantee       | Can lose msg? | Can duplicate msg? | How                                      |
+   +-----------------+---------------+---------------------+-----------------------------------------+
+   | At-most-once    | Yes           | No                  | No retries, fire and forget              |
+   | At-least-once   | No            | Yes                 | Retry until ACK received                 |
+   | Exactly-once    | No            | No                  | At-least-once + idempotent consumer      |
+   +-----------------+---------------+---------------------+-----------------------------------------+
+
+ NOTE: Since most systems only offer "at-least-once" delivery in practice, consumers MUST be idempotent to handle duplicate messages safely. Exactly once is hard, expensive and often unnecessary to handle
+
+
+
+❓ When to use Queue?
+ - Async work
+ - Busty traffic
+ - Decoupling and Reliability
+
+  When not to use Queue?
+ - Sync workloads with strict latency requirements
+
+
+
+🔃 Ordering Guarantees
+ - Global ordering across all consumers is hard to guarantee at scale(multiple partitions/consumers processing in parallel).
+ - Kafka guarantees ordering only WITHIN a single partition, not across partitions.
+ - To keep related messages in order (e.g. all events for the same user_id), use a "partition key" so they always land on the same partition and are processed by the same consumer in order.
+
+
+Deep Dives:
+ How will you handle increased throughput?
+  - Increase the number of partitions of a queue
+
+
+🧩 Kafka Specific Concepts
+ - Topic: A category/feed name to which messages are published(e.g. "orders", "payments").
+ - Partition: A topic is split into partitions for parallelism, each partition is an ordered, append-only log.
+ - Offset: A unique, sequential ID for each message within a partition, consumers track their offset to know what's already been read.
+ - Consumer Group: A group of consumers that share the work of reading from a topic, each partition is consumed by only ONE consumer within a group(enables horizontal scaling of consumers).
+ - Replication: Each partition is replicated across multiple brokers for fault tolerance, one replica is the "leader"(handles reads/writes), others are "followers".
+ - Retention: Kafka retains messages for a configured period(time/size based) regardless of whether they've been consumed, unlike traditional queues which delete messages after consumption.
+
+    Topic "orders" (3 partitions)                    Consumer Group "order-service"
+
+    Partition 0: [m0][m1][m2][m3] -> offset 4  ---->  Consumer 1
+    Partition 1: [m0][m1][m2]     -> offset 3  ---->  Consumer 2
+    Partition 2: [m0][m1][m2][m3][m4] -> offset 5 --> Consumer 3
+
+    Each partition <-> exactly one consumer within the group (parallelism = no. of partitions)
+
+
+
+🔨 Challenges
+ - Message Ordering: Hard to maintain global order once you scale out with multiple partitions/consumers.
+ - Duplicate Messages: At-least-once delivery means consumers WILL see duplicates, so processing must be idempotent.
+ - Poison Messages: A malformed/bad message that keeps failing and getting retried, blocking the queue, needs a DLQ + retry limit.
+ - Backpressure: If producers produce faster than consumers can consume, the queue keeps growing, need to auto scale consumers or apply rate limiting/load shedding upstream.
+ - Message Size Limits: Large payloads(e.g. files) shouldn't go directly in the queue, store them in blob storage(S3) and pass a reference/URL in the message instead.
+ - Monitoring: Need to track queue depth/lag(how far behind consumers are) to detect issues early.
+
+
+
+🌐 Popular Message Queue Technologies
+ - RabbitMQ: Traditional message broker, push based, supports complex routing(exchanges: direct, topic, fanout), great for point-to-point task queues.
+ - Apache Kafka: Distributed log based system, pull based, extremely high throughput, great for event streaming, replayability and pub/sub at scale.
+ - Amazon SQS: Fully managed queue service, simple point-to-point, integrates well with other AWS services, supports DLQ out of the box.
+ - Amazon SNS / Google Pub/Sub: Fully managed pub/sub systems, great for fan-out notifications to multiple subscribers.
+ - Redis Streams / Pub-Sub: Lightweight, in-memory, very fast, but less durable than Kafka/RabbitMQ(good for simpler/low-durability use cases).
+
+   +----------------+-------------+-----------+-------------------+------------------+
+   | Technology     | Model       | Delivery  | Replay messages?  | Throughput       |
+   +----------------+-------------+-----------+-------------------+------------------+
+   | RabbitMQ       | Point/Pub   | Push      | No                | Medium           |
+   | Apache Kafka   | Pub/Sub     | Pull      | Yes (retention)   | Very High        |
+   | Amazon SQS     | Point       | Pull      | No                | High(managed)    |
+   | Amazon SNS     | Pub/Sub     | Push      | No                | High(managed)    |
+   | Redis Streams  | Pub/Sub     | Push/Pull | Limited(in-memory)| Very High(low durability) |
+   +----------------+-------------+-----------+-------------------+------------------+
+
+
+
+🚀 Use Cases
+ - Order processing systems(e.g. e-commerce checkout -> payment -> inventory -> shipping, each as an async step).
+ - Sending notifications(Email, SMS, Push) asynchronously without blocking the main request.
+ - Event driven microservices architecture, decoupling services from each other.
+ - Log aggregation and analytics pipelines(e.g. Kafka ingesting logs/events from multiple services).
+ - Rate limiting/smoothing traffic spikes to protect downstream services(e.g. ticket booking, flash sales).
+ - Video/Image processing pipelines(upload triggers a message, worker processes it async).
+
+
+
+⚖️ Message Queue vs Direct API Call
+ - Direct API Call(Sync): Simple, immediate response, but tightly coupled, caller blocks/fails if callee is down or slow.
+ - Message Queue(Async): Decoupled, resilient to downstream failures/slowness, but adds complexity(eventual consistency, harder debugging, needs monitoring).
