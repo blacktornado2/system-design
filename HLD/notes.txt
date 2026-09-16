@@ -10,9 +10,8 @@ References:
 
 Philosophy:
   - Take an ambiguously defined, high-level problem and break it down into the pieces of infrastructure that you'll need to solve it.
-  - System design is all about finding the right tradeoffs
-  - Put all the moving parts of a system together: DB, API, Caching, Load Balancing, Servers, Queue
-  - Balance competing priorities: speed vs. cost, consistency vs. availability, simplicity vs. flexibility
+  - System design is all about finding the right tradeoffs, for example: speed vs. cost, consistency vs. availability, simplicity vs. flexibility
+  - Put all the moving parts of a system together: DB, API, Cache, Load Balancer, Servers, Queue
   - Handle challenges like scalability, fault tolerance and performance
   - Skills required: Problem-solving, Big picture thinking, trade-off analysis, communication, adaptability
 
