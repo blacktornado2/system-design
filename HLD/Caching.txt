@@ -1,0 +1,117 @@
+Blog: https://www.hellointerview.com/learn/system-design/core-concepts/caching
+Video: https://www.youtube.com/watch?v=1NngTUYPdpI&list=PL5q3E8eRUieVFeK1oLahJ8KONkAxDpqk2&index=3
+Excalidraw: https://app.excalidraw.com/l/56zGeHiLyKZ/7AUE0BlFxMd
+
+
+Caching:
+ - A cache is just a temporary storage that keeps recently used data handy so you can get it much faster next time
+ - Memory (RAM) is roughly 50-100x faster than disk(SSD) on average
+
+
+Types of Caching:
+ 1. External Caching: An external cache is a standalone cache service that your application talks to over the network. 
+    - Example: Redis, Memcached  
+    - Network overhead
+    - Can be shared across multiple services
+    - Can be scaled independently
+    - By default choice for most of the cases in the interview
+ 2. In-process Caching: The cache is present inside the Memory of Application Server itself
+    - Faster than external cache
+    - No network overhead
+    - Not shared across services, so less scalable
+    - We don't need this until we need ultra-low latency
+    - Applications: config values, feature flags, hot keys, rate limiting counters
+ 3. CDN: A CDN(Content Delivery Network) is a geographically distributed network of servers that caches content close to users.
+    - Optimised for network latency
+    - Mostly used for media delivery
+    - If the asset is not present, CDN fetches data, caches it and then returns it back to client
+ 4. Client side caching: Cache stored on client device
+    - Avoids unnecessary network calls
+    - Superfast
+    - Stale data issues
+    - Example: browser cache, mobile app cache
+    - Not very relevant until our system requires offline access to data
+
+
+Cache Architecture:
+ - Order in which read and write happens
+ 1. Cache-Aside:
+    - check cache
+    - if present, return data
+    - if not present
+    - fetch from DB
+    - update cache
+    - return data to client
+    - most common pattern
+ 2. Write Through Cache:
+    - application server writes data to cache
+    - cache syncronously writes to the DB
+    - return data to client
+    - the write operation does not complete until both the cache and database are updated
+    - read data directly from cache because write has already written data on cache first
+    - redis doesnt natively support it
+    - Ex: Spring Cache, Hazel Cache
+    - tradeoffs: slow writes, pollute data (bloat), dual write problem, less common
+    - applications: when reads must always return fresh data and your system can tolerate slightly slower writes
+ 3. Write Behind Cache:
+    - application server write to cache first
+    - then flush to DB later in batches
+    - good for batch processing
+    - tradeoff: not real time, inconsistency
+    - application: use when high throughput is more important than consistency, analytics and metrics pipeline
+ 4. Read Through Cache:
+    - check cache
+    - if present, return data
+    - if not present
+    - cache server fetch from DB
+    - update cache
+    - return data to client
+    - similar to read aside, just that fetching from DB is done via cache server and not application server
+    - less common
+    - applications: CDNs
+
+
+Cache Eviction Policies:
+ - Cache is more expensive memory than disk
+ 1. LRU: Evict items that haven't been used recently. Most common and balanced default
+ 2. LFU: Evict items tht are used least often, even if accessed recently. Good for highly skewerd access patterns like trending videos or top playlists
+ 3. FIFO: Evict the oldest item first. Simple, but rarely the right choice
+ 4. TTL: Each item expires after a set time (e.g. 5 minutes). Great for data that can go stale, like API response, often combined with LRU and LFU
+
+
+Common Issues / Deep Dives
+ 1. Cache Stampede(Thundering Herd):
+    - popular cache entry expires
+    - many requests tru to rebuild it at the same time
+    - queries can overload the DB
+    - How to avoid: 
+      - request coalescing(single flight): allow only one request to rebuild the cache while others wait
+      - Cache warming: refresh popular keys proactively before they expire
+ 2. Cache Consistency
+    - Most systems read from the cache and write the DB
+    - How to avoid:
+      - Cache invalidation on writes
+      - short TTLs for stale tolerance
+      - accept eventual consistency
+ 3. Hot Keys
+   - A few items are accessed much more than other items
+   - How to avoid:
+     - Replicate hot keys
+     - Add a local fallback cache
+     - Apply rate limiting
+
+
+Caching in System Design Interviews:
+ 
+When to Bring Up Caching
+ - Ready-heavy workload
+ - Expensive queries (e.g., joins, aggregations, complex calculations, computing a news feed)
+ - High Database CPU
+ - Latency Requirements
+
+How to Introduce Caching:
+ 1. Identify the bottleneck
+ 2. Decide what to cache
+ 3. Choose your cache architecture
+ 4. Set an eviction policy
+ 5. Address the downsides
