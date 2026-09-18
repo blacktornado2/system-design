@@ -101,12 +101,12 @@ https://www.hellointerview.com/learn/system-design/core-concepts/api-design
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The Fundamentals:
-1. Storage(relational, document based, key-value, ACID, BASE, access patterns, consistency requirements): https://www.hellointerview.com/learn/system-design/core-concepts/data-modeling
-2. Scalability(Scale compute, scale storage: sharding, consistent hashing)
-3. Networking: https://www.hellointerview.com/learn/system-design/core-concepts/networking-essentials
-4. Latency, Throughput & Performance(RAM, SSD, HDD, same/cross region network call)
-5. Fault tolerance & Redundancy
-6. CAP theorem: https://www.hellointerview.com/learn/system-design/core-concepts/cap-theorem
+ 1. Storage(relational, document based, key-value, ACID, BASE, access patterns, consistency requirements): https://www.hellointerview.com/learn/system-design/core-concepts/data-modeling
+ 2. Scalability(Scale compute, scale storage: sharding, consistent hashing)
+ 3. Networking: https://www.hellointerview.com/learn/system-design/core-concepts/networking-essentials
+ 4. Latency, Throughput & Performance(RAM, SSD, HDD, same/cross region network call)
+ 5. Fault tolerance & Redundancy
+ 6. CAP theorem: https://www.hellointerview.com/learn/system-design/core-concepts/cap-theorem
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
